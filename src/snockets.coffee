@@ -138,7 +138,7 @@ module.exports = class Snockets
       @readdir @absPath(dirName), flags, (err, items) =>
         return callback err if err
         q.unwaitFor dirName
-        for item in items
+        for item in items.sort()
           itemPath = @joinPath dirName, item
           continue if @absPath(itemPath) is @absPath(filePath)
           q.waitFor itemPath
